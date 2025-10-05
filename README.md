@@ -1,4 +1,4 @@
-Implementation codes and datasets for the paper "High-Asymmetry Metasurface: A New Solution for Terahertz Resonance via Active Learning-Augmented Diffusion Model" at https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202508610.
+Implementation code and dataset for the paper "High-Asymmetry Metasurface: A New Solution for Terahertz Resonance via Active Learning-Augmented Diffusion Model" at https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202508610.
 
 1. The 68 data samples collectd from existing studies are presented in the folder "dataset".
 2. The files related to source-code diffusion model are forked from https://github.com/lucidrains/denoising-diffusion-pytorch/tree/main/denoising_diffusion_pytorch. 
