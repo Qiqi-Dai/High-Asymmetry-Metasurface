@@ -1,0 +1,54 @@
+#########################################################
+# Extract effective material properties from S-parameters
+closeall;
+clear;
+
+for(i=0:99) {
+
+load(num2str(i)+".fsp");
+
+run;
+
+# plot the amplitude and phase of the S-parameters
+S=getresult("grating_s_parameters","S");
+S11 = S.S11_Gn;
+S21 = S.S21_Gn;
+f = S.f;
+
+abs_S11 = abs(S11);
+abs_S21 = abs(S21);
+angle_S11 = unwrap(angle(S11));
+angle_S21 = unwrap(angle(S21));
+
+# calculate effective material properties
+d = getnamed("grating_s_parameters","metamaterial span");
+k = 2*pi*f/c;
+x = 1/(2*S21)*(1-S11^2+S21^2);
+n1 = (-1i*log( x+1i*sqrt(1-x^2) ) ) / (k*d);
+n2 = (-1i*log( x-1i*sqrt(1-x^2) ) ) / (k*d);
+n_eff = (imag(n1) >= 0)*n1 + (imag(n1) < 0)*n2;
+z1 = sqrt( ( (1+S11)^2-S21^2 ) / ( (1-S11)^2-S21^2 ) );
+z2 = -sqrt( ( (1+S11)^2-S21^2 ) / ( (1-S11)^2-S21^2 ) );
+z_eff = (imag(z1) <= 0)*z1 + (imag(z1) > 0)*z2;
+eps_eff = n_eff/z_eff;
+mu_eff = n_eff*z_eff;
+
+# plot effective material parameters
+
+real_n_eff = real(n_eff);
+imag_n_eff = imag(n_eff);
+real_z_eff = real(z_eff);
+imag_z_eff = imag(z_eff);
+real_eps_eff = real(eps_eff);
+imag_eps_eff = imag(eps_eff);
+real_mu_eff = real(mu_eff);
+imag_mu_eff = imag(mu_eff);
+
+T = getresult("grating_s_parameters","T");
+T = T.T;
+
+matlabsave('results_'+num2str(i), T, abs_S11, abs_S21, angle_S11, angle_S21, real_n_eff, imag_n_eff, real_z_eff, imag_z_eff, real_eps_eff, imag_eps_eff, real_mu_eff, imag_mu_eff);
+
+closeall;
+clear;
+}

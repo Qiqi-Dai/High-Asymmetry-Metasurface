@@ -1,0 +1,19 @@
+closeall;
+clear;
+
+for(i=0:99){
+    load("model_S.fsp");
+    addimport;
+    importbinary('import_'+num2str(i)+'.txt',"microns");
+    select('import');
+    set('x', 0);
+    set('y', 0);
+    set('z min', 0.5e-6);
+    set('z max', 0.7e-6);
+    set('first axis', 'z');
+    set('rotation 1', -90);
+    set('material', 'Al (Aluminium) - CRC');
+    addtogroup("::model::metamaterial");
+    save(num2str(i)+'.fsp');
+    
+}
