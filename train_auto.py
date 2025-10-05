@@ -37,9 +37,9 @@ for it_num in range(it_total):
 
     Image_size = 100
     Batch_size = 16
-    train_num_steps = 20000 ### 20000
-    save_and_sample_every = 1000 ### 1000
-    Num_sampling = 100 ### 100
+    train_num_steps = 20000
+    save_and_sample_every = 1000 
+    Num_sampling = 100 
 
     model = Unet(
         dim = 64,
@@ -141,5 +141,6 @@ for it_num in range(it_total):
         os.remove("%d_p0.log"%i)
         time.sleep(1)      
     
+
 
 
