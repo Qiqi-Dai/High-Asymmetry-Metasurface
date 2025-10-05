@@ -15,7 +15,7 @@ import matlab.engine
 
 torch.cuda.set_per_process_memory_fraction(0.8, 0)
 
-it_total = 20
+it_total = 10
 
 for it_num in range(it_total):
 
@@ -141,4 +141,5 @@ for it_num in range(it_total):
         os.remove("%d_p0.log"%i)
         time.sleep(1)      
     
+
 
