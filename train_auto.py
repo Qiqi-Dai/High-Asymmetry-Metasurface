@@ -135,12 +135,13 @@ for it_num in range(it_total):
     eng.select_V2('result_it%d/visual/'%(it_num+1), 'result_it%d/visual/V1/'%(it_num+1), 'result_it%d/visual/V2/'%(it_num+1), 'dataset/', nargout=0)
     eng.quit()
 
-    #### Delete the simulated files
+    #### Delete the simulated files to free up space
     for i in range(Num_sampling):
         os.remove("%d.fsp"%i)
         os.remove("%d_p0.log"%i)
         time.sleep(1)      
     
+
 
 
 
