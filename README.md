@@ -5,4 +5,4 @@ Implementation code and dataset for the paper "High-Asymmetry Metasurface: A New
 3. Lumerical FDTD, MATLAB, and PyTorch should be installed before running.
 4. Commands for automatically training and testing the iterative model: python train_auto.py.
 
-If any issues, please feel free to contact daiq0004@e.ntu.edu.sg
+If any problems, please release them in Issues.
